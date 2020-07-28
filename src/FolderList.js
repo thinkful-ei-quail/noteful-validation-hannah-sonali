@@ -11,10 +11,8 @@ export default class FolderList extends React.Component {
   
       let folderClass = 'folder'
       const folderId = this.props.match.params.folderId;
-      console.log("folderId", folderId);
   
       if(folderId === folder.id) {
-        console.log("in activeFolder");
         folderClass = 'activeFolder';
       }
   

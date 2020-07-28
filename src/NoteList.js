@@ -6,36 +6,37 @@ import './NoteList.css';
 
 export default class NoteList extends React.Component {
 
-  noteDivs = data.notes;
+  render() {
 
-  folderId = this.props.match.params.folderId;
+    let noteDivs = data.notes;
+    console.log("orig", noteDivs);
 
-  //only filter if folderId is passed in
+    const folderId = this.props.match.params.folderId;
 
-  if(folderId) {
-    console.log("notelist.js folderId", folderId);
-    this.noteDivs = this.noteDivs.filter(note => note.folderId === folderId);
-  }
-  
-  //do this for all or for filter
-    noteDivs = data.notes.map(note => {
+    if (folderId) {
+      console.log("notelist.js folderId", folderId);
+      noteDivs = noteDivs.filter(note => note.folderId === folderId);
+    }
+
+    console.log("after filter", noteDivs);
+
+    //do this for all or for filter
+    noteDivs = noteDivs.map(note => {
       return (
         <div key={note.id} id={note.id} className='note'>
           <Link to={`/note/${note.id}`}>
-          {note.name}
-          </Link><br/>
-          Date modified on {note.modified.substr(0,10)}
+            {note.name}
+          </Link><br />
+              Date modified on {note.modified.substr(0, 10)}
         </div>
       )
     })
-  
-    render() { 
-      
-      
-      return (
-        <>
-          {this.noteDivs}
-        </>
-      )
-    }
+
+
+    return (
+      <>
+        {noteDivs}
+      </>
+    )
   }
+}
