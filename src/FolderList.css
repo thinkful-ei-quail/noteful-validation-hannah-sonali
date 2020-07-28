@@ -1,0 +1,15 @@
+div.folder, div.activeFolder {
+  padding: 10px 20px;
+  background-color: peachpuff;
+  border: solid thin darkslategray;
+}
+
+a:link, a:hover, a:active, a:visited {
+  color: darkslategray;
+  text-decoration: none;
+}
+
+div.activeFolder {
+  background-color: darkslategray;
+  color: peachpuff;
+}

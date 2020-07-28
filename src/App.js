@@ -1,31 +1,41 @@
 import React from 'react';
-import {Route} from 'react-router-dom';
+import { Route, Link } from 'react-router-dom';
 import './App.css';
 import FolderList from './FolderList';
 import NoteList from './NoteList'
+import BackButton from './BackButton';
+import NoteDetails from './NoteDetails';
 
 
-function App() {
-  return (
-    <div className="App">
-      <header>
-        <h1>Noteful</h1>
-      </header>
-      <hr/>
-      <div className="wrapper">
-        <nav>
-          <Route exact path='/' component={FolderList}
-          />  {/*List of folders*/}
-        </nav>
-        <main>
-          <Route exact path='/' component={NoteList} /> {/* all notes */}
-        </main>
+
+export default class App extends React.Component {
+
+  render() {
+    return (
+      <div className="App">
+        <header>
+          <h1><Link to='/'>Noteful</Link></h1>
+        </header>
+        <hr />
+        <div className="wrapper">
+          <nav>
+            <Route exact path='/' component={FolderList}
+            />  {/*List of folders*/}
+            <Route path='/folder/:folderId' component={FolderList}
+            />
+            <Route path='/note/:noteId' component={BackButton}
+            />
+          </nav>
+          <main>
+            <Route exact path='/' component={NoteList} /> {/* all notes */}
+            <Route path='/folder/:folderId' component={NoteList}/>
+            <Route path='/note/:noteId' component={NoteDetails}/>
+          </main>
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
-
-export default App;
 
 
 /*
