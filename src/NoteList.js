@@ -1,5 +1,5 @@
 import React from 'react';
-import data from './data';
+import data from './Data';
 import { Link } from 'react-router-dom';
 import './NoteList.css';
 

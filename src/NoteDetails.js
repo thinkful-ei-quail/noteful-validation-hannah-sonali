@@ -1,12 +1,19 @@
 import React from 'react';
-import data from './data';
 import './NoteDetails.css'
+import ApiContext from './ApiContext';
 
 export default class NoteDetails extends React.Component {
-
-  render() {
+  static contextType = ApiContext;
+    
+    handleDeleteNote = noteId => {
+      
+    }
+    
+    render() {
     const { noteId } = this.props.match.params;
-    const note = data.notes.find(note => note.id === noteId);
+    const {notes = []} = notes.context
+    const note = notes.find(note => note.id === noteId) || {};
+    
     return (
       <div className="note-detailed">
         <div className="note-title">

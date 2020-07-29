@@ -1,20 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import data from './data';
 import './BackButton.css';
+import ApiContext from './ApiContext';
 
-export default class BackButon extends React.Component {
+export default class BackButton extends React.Component {
+  static contextType = ApiContext;
   getFolderName(noteId) {
-    // console.log("noteId", noteId);
-    // const folderToFind = data.folders.find(folder => folder.id === noteId);
-    // console.log("folderToFind", folderToFind);
-    // return folderToFind.name;
-    return data.folders.find(folder => folder.id === noteId).name;
+    return this.context.folders.find(folder => folder.id === noteId).name;
   }
 
   render() {
     const { noteId } = this.props.match.params;
-    const note = data.notes.find(note => note.id === noteId);
+    const note = this.context.notes.find(note => note.id === noteId);
     return (
       <>
         <Link to='/'>

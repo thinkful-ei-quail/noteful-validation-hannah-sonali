@@ -1,12 +1,13 @@
 import React from 'react';
-import data from './data';
 import {Link} from 'react-router-dom';
 import './FolderList.css';
+import ApiContext from './ApiContext';
 
 export default class FolderList extends React.Component {
-
-  render() {   
-    const folderDivs = data.folders.map(folder => {
+  static contextType = ApiContext;
+  render() {
+    const { folders=[], notes=[]} = this.context   
+    const folderDivs = folders.map(folder => {
       let folderClass = 'folder'
       const folderId = this.props.match.params.folderId;
   
