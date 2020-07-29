@@ -1,7 +1,8 @@
 div.folder, div.activeFolder {
-  padding: 10px 20px;
+  padding: 20px;
+  margin: 10px 0 10px 20px;
   background-color: peachpuff;
-  border: solid thin darkslategray;
+  font-size: 25px;
 }
 
 a:link, a:hover, a:active, a:visited {

@@ -1,0 +1,15 @@
+div.back-button {
+    padding: 20px;
+    margin: 10px 0 10px 20px;
+    background-color: darkslategray;
+    color: peachpuff;
+    text-decoration: none;
+}
+
+.folder-name{
+    float: right;
+    writing-mode: vertical-lr;
+    text-orientation: upright;
+    font-size: 40px;
+    color: darksalmon;
+}

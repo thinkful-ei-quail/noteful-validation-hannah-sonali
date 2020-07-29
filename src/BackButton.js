@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import data from './data';
+import './BackButton.css';
 
 export default class BackButon extends React.Component {
-
   getFolderName(noteId) {
     // console.log("noteId", noteId);
     // const folderToFind = data.folders.find(folder => folder.id === noteId);
@@ -17,8 +17,14 @@ export default class BackButon extends React.Component {
     const note = data.notes.find(note => note.id === noteId);
     return (
       <>
-        <Link to='/'>Back</Link><br/>
-        {this.getFolderName(note.folderId)}
+        <Link to='/'>
+          <div className="back-button">
+            Back
+          </div>
+        </Link>
+        <div className="folder-name">
+          {this.getFolderName(note.folderId)}
+        </div>
       </>
     )
   }

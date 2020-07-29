@@ -1,6 +1,18 @@
 div.note {
   padding: 20px;
-  margin: 20px 0;
-  border: thin solid darkslategray;
+  margin: 20px auto;
+  background-color: peachpuff;
   width: 70%;
+  font-size: 20px;
+}
+
+.noteList-modified {
+  margin: 10px;
+  font-size: 15px;
+}
+
+main {
+  overflow: hidden;
+  height: 800px;
+  overflow-y: scroll;
 }
