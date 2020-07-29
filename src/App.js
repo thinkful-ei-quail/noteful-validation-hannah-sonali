@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import { Route, Link } from 'react-router-dom';
 import './App.css';
 import FolderList from './FolderList';
@@ -9,7 +9,7 @@ import ApiContext from './ApiContext';
 import Data from './Data';
 import API from './API';
 
-export default class App extends React.Component {
+export default class App extends Component {
   state = {
     notes:[],
     folders:[],

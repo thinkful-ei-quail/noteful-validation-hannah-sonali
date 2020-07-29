@@ -2,16 +2,17 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './BackButton.css';
 import ApiContext from './ApiContext';
+import {findFolder, findNote} from './Helper';
+
 
 export default class BackButton extends React.Component {
   static contextType = ApiContext;
-  getFolderName(noteId) {
-    return this.context.folders.find(folder => folder.id === noteId).name;
-  }
 
   render() {
+    const { notes, folders } = this.context
     const { noteId } = this.props.match.params;
-    const note = this.context.notes.find(note => note.id === noteId);
+    const note = findNote(notes, noteId) || {}
+    const folder = findFolder(folders, note.folderId)
     return (
       <>
         <Link to='/'>
@@ -19,9 +20,11 @@ export default class BackButton extends React.Component {
             Back
           </div>
         </Link>
-        <div className="folder-name">
-          {this.getFolderName(note.folderId)}
-        </div>
+        { folder && (
+          <h2 className="folder-name">
+            {folder.name}
+          </h2>
+        )}
       </>
     )
   }
