@@ -7,6 +7,7 @@ import BackButton from './BackButton';
 import NoteDetails from './NoteDetails';
 import ApiContext from './ApiContext';
 import Data from './Data';
+import API from './API';
 
 export default class App extends React.Component {
   state = {
@@ -28,9 +29,34 @@ export default class App extends React.Component {
   }
 
   componentDidMount(){
-    setTimeout(() => this.setState({
-      notes:Data.notes, folders:Data.folders
-    }), 700)
+    Promise.all([fetch(`${API.api}/notes`),
+      fetch(`${API.api}/folders`),
+      ])
+      .then(([notesRes, foldersRes]) => {
+        if(!notesRes.ok){
+          return notesRes.json()
+          .then (err => Promise.reject(err))
+        }
+        if(!foldersRes.ok){
+          return notesRes.json()
+          .then (err => Promise.reject(err))
+        }
+        return Promise.all([
+          notesRes.json(),
+          foldersRes.json()
+        ])
+      })
+      .then(([notes, folders]) => {
+        console.log(notes, folders);
+        setTimeout(() => this.setState({
+          notes:notes, folders:folders
+        }), 700)
+      })
+      .catch(err => {
+        console.log('Danger will robinson')
+        console.error(err)
+      })
+    
   }
 
   render() {

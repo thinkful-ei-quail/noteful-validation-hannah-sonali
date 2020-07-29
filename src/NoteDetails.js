@@ -5,9 +5,9 @@ import ApiContext from './ApiContext';
 export default class NoteDetails extends React.Component {
   static contextType = ApiContext;
     
-    handleDeleteNote = noteId => {
+    // handleDeleteNote = noteId => {
       
-    }
+    // }
     
     render() {
     const { noteId } = this.props.match.params;

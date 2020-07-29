@@ -16,3 +16,8 @@ main {
   height: 800px;
   overflow-y: scroll;
 }
+
+.delete_button {
+  float: right;
+  margin: -30px 0;
+}
