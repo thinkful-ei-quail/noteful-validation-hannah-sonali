@@ -1,0 +1,10 @@
+
+.delete_button {
+  margin: 0 0 0 auto;
+  max-width: 160px;
+}
+
+ul.noteList{
+  list-style: none;
+  padding: 0;
+}

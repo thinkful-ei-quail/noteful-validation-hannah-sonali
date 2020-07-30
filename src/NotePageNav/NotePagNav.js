@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './BackButton.css';
-import ApiContext from './ApiContext';
-import {findFolder, findNote} from './Helper';
+import './NotePageNav.css';
+import ApiContext from '../ApiContext';
+import {findFolder, findNote} from '../Helper';
 
 
-export default class BackButton extends React.Component {
+export default class NoteSideBar extends React.Component {
   static contextType = ApiContext;
 
   render() {

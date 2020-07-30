@@ -19,11 +19,17 @@ nav {
   height: 800px;
   border-right: thin solid darkslategray;
 }
-
+a {
+  text-decoration: none;
+  color: darkslategray;
+}
 main {
   flex: 3;
   padding: 0 0 0 20px;
   background-color: darkslategray;
+  overflow: hidden;
+  height: 800px;
+  overflow-y: scroll;
 }
 
 header {

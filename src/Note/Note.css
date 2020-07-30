@@ -11,3 +11,12 @@
 .note-title, .note-date {
     margin-bottom: 10px;
 }
+
+.note-modified {
+    margin: 10px;
+    font-size: 18px;
+}
+
+.note-title a{
+    font-size: 25px;
+}

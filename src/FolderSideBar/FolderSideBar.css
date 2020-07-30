@@ -1,0 +1,22 @@
+.folder, .folder-active {
+  padding: 20px;
+  margin: 10px 0 0 20px;
+  background-color: peachpuff;
+  font-size: 28px;
+} 
+
+a.folder:link, a.folder:hover, a.folder:active, a.folder:visited {
+  color: darkslategray;
+  text-decoration: none;
+}
+
+.folder-active {
+  background-color: darkslategray;
+  color: peachpuff;
+  text-decoration: none;
+}
+
+.folderList {
+  display: flex;
+  flex-direction: column;
+}

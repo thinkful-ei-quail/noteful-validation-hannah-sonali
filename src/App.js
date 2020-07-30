@@ -1,12 +1,11 @@
 import React, {Component} from 'react';
 import { Route, Link } from 'react-router-dom';
 import './App.css';
-import FolderList from './FolderList';
-import NoteList from './NoteList'
-import BackButton from './BackButton';
-import NoteDetails from './NoteDetails';
+import FolderSideBar from './FolderSideBar/FolderSideBar';
+import NoteListMain from './NoteListMain/NoteListMain';
+import NotePageNav from './NotePageNav/NotePagNav';
+import NotePageMain from './NotePageMain/NotePageMain';
 import ApiContext from './ApiContext';
-import Data from './Data';
 import API from './API';
 
 export default class App extends Component {
@@ -14,13 +13,6 @@ export default class App extends Component {
     notes:[],
     folders:[],
   }
-
-  // handleSetState = (notes,folders) => {
-  //   this.setState({
-  //     notes:notes,
-  //     folders:folders,
-  //   })
-  // }
   
   handleDeleteNote = noteId => {
     this.setState({
@@ -47,13 +39,11 @@ export default class App extends Component {
         ])
       })
       .then(([notes, folders]) => {
-        console.log(notes, folders);
         setTimeout(() => this.setState({
           notes:notes, folders:folders
         }), 700)
       })
       .catch(err => {
-        console.log('Danger will robinson')
         console.error(err)
       })
     
@@ -74,17 +64,17 @@ export default class App extends Component {
           <hr />
           <div className="wrapper">
             <nav>
-              <Route exact path='/' component={FolderList}
+              <Route exact path='/' component={FolderSideBar}
               />  {/*List of folders*/}
-              <Route path='/folder/:folderId' component={FolderList}
+              <Route path='/folder/:folderId' component={FolderSideBar}
               />
-              <Route path='/note/:noteId' component={BackButton}
+              <Route path='/note/:noteId' component={NotePageNav}
               />
             </nav>
             <main>
-              <Route exact path='/' component={NoteList} /> {/* all notes */}
-              <Route path='/folder/:folderId' component={NoteList}/>
-              <Route path='/note/:noteId' component={NoteDetails}/>
+              <Route exact path='/' component={NoteListMain} /> {/* all notes */}
+              <Route path='/folder/:folderId' component={NoteListMain}/>
+              <Route path='/note/:noteId' component={NotePageMain}/>
             </main>
           </div>
         </div>
