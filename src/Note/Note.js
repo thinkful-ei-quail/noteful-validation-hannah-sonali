@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './Note.css'
 import ApiContext from '../ApiContext';
-import API from '../API';
 import PropTypes from 'prop-types';
+import API from '../API';
+import { format } from 'date-fns';
+import './Note.css';
 
 export default class Note extends React.Component {
   static contextType = ApiContext;
@@ -11,7 +12,7 @@ export default class Note extends React.Component {
     onDeleteNote: () => {}
   }
 
-  propTypes = {
+  static propTypes = {
     id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     modified: PropTypes.string.isRequired,
@@ -59,7 +60,11 @@ export default class Note extends React.Component {
         >
           Delete
         </button>
-      <p className="note-modified">{modified}</p>
+      <p className="note-modified">
+        Modified on
+        {' '}
+        {format(new Date(modified), 'MMMM do, yyy')}
+      </p>
       </div>
     )
   }

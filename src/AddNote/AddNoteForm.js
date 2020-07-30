@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
 import ApiContext from '../ApiContext';
 import API from '../API';
 import ValidationError from '../ErrorHandling/ValidationError'
 import './AddNoteForm.css';
-
-//need help with validation of classes
 
 export default class AddNoteForm extends Component {
     static contextType= ApiContext;
@@ -53,23 +50,26 @@ export default class AddNoteForm extends Component {
       this.setState({
         noteName: {value: name , touched: true}
       })
+      console.log(this.state.noteName)
     }
 
     updateContent(content) {
       this.setState({
         content: {value: content, touched: true}
       })
+      console.log(this.state.content)
     }
 
     updateSelect(folder){
       this.setState({
         select: {value: folder, touched: true}
       })
+      console.log(this.state.select)
     }
 
 
     validateName() {
-      const nameCheck = this.state.name.value.trim()
+      const nameCheck = this.state.noteName.value.trim()
       if(nameCheck.length === 0) {
         return 'Name is required'
       }
@@ -91,39 +91,45 @@ export default class AddNoteForm extends Component {
  
  
  render () {
-        const { folders } = this.context
-        if(!folders) {
-          return '';
-        }
-
-        console.log(this.state)
-        return (
-            <section className="addNote">
-                <h2 className="createNote">Create a note</h2>
-                <form className="addNote-form" onSubmit={e => this.handleSubmitClick(e)}>
-                    <div className="field">
-                      <label htmlFor="form-name">Name</label>
-                      <input type="text" id="form-name" name="form-name" onChange={e => this.updateFormName(e.target.value)} required/>
-                      {this.state.noteName.touched && (<ValidationError message={this.validateName()}/>)}
-                      <label htmlFor="form-content">Content</label>
-                      <textarea id="form-content" name="form-content" onChange={e => this.updateContent(e.target.value)}/>
-                      {this.state.content.touched && (<ValidationError message={this.validateContent()}/>)}
-                      <label htmlFor="form-select">Folder</label>
-                      <div className="select-wrapper">
-                        <select id="form-select" name="form-select" required onChange={e => this.updateSelect(e.target.value)}>
-                          {folders.map(folder =>
-                            <option value={`${folder.id}`}>{`${folder.name}`}</option>
-                          )}
-                        </select>
-                        {this.state.select.touched &&(<ValidationError message={this.validateSelect()}/>)}
-                      </div>
-                    </div>
-                    <div className="buttons">
-                      <button type="submit" className="noteSubmit">Submit</button>
-                    </div>
-                </form>
-            </section>
-        )
+  const { folders } = this.context
+  const nameError = this.validateName();
+  const contentError = this.validateContent();
+  const selectError = this.validateSelect();
+    if(!folders) {
+      return '';
+    }
+    return (
+      <section className="addNote">
+        <h2 className="createNote">Create a note</h2>
+        <form className="addNote-form" onSubmit={e => this.handleSubmitClick(e)}>
+          <div className="field">
+            <label htmlFor="form-name">Name</label>
+            <input type="text" id="form-name" name="form-name" onChange={e => this.updateFormName(e.target.value)}/>
+            {this.state.noteName.touched && (<ValidationError message={nameError}/>)}
+            <label htmlFor="form-content">Content</label>
+            <textarea id="form-content" name="form-content" onChange={e => this.updateContent(e.target.value)}/>
+            {this.state.content.touched && (<ValidationError message={contentError}/>)}
+            <label htmlFor="form-select">Folder</label>
+            <div className="select-wrapper">
+              <select id="form-select" name="form-select" onChange={e => this.updateSelect(e.target.value)}>
+                {folders.map(folder =>
+                  <option key={`${folder.id}`} value={`${folder.id}`}>{`${folder.name}`}</option>
+                )}
+              </select>
+              {this.state.select.touched && (<ValidationError message={selectError}/>)}
+            </div>
+          </div>
+          <div className="buttons">
+            <button type="submit" className="noteSubmit" 
+              disabled={this.validateName() ||
+              this.validateContent() ||
+              this.validateSelect()}>
+                Submit
+            </button>
+          </div>
+        </form>
+      </section>
+    )
     }
 }
 

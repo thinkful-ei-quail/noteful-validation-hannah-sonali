@@ -21,7 +21,7 @@ export default class NoteListMain extends Component {
               <Note id={note.id} name={note.name} modified={note.modified}/>
             </li>
           ))}
-          <li>
+          <li className="buttons">
             <Link to={`/addNote`}>
               <button 
                 className="addNote-button"

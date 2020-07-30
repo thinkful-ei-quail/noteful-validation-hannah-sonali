@@ -15,13 +15,15 @@ export default class FolderSideBar extends React.Component {
             {folder.name}
           </Link>
         )}
-        <Link to={`/addFolder`}>
-          <button
-            className="addFolder-button"
-            type="button">
-            Add Folder
-          </button>
-        </Link>
+        <div className="buttons">
+          <Link to={`/addFolder`}>
+            <button
+              className="addFolder-button"
+              type="button">
+              Add Folder
+            </button>
+          </Link>
+        </div>
       </nav>
     )
   }

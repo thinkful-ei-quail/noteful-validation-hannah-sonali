@@ -17,3 +17,13 @@ ul.noteList{
   border-radius: 20px;
 }
 
+
+.addNote-button {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  background-color: peachpuff;
+  color: darkslategray;
+  padding: 8px;
+  border-radius: 20px;
+}
