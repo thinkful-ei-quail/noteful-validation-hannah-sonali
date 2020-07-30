@@ -11,10 +11,17 @@ export default class FolderSideBar extends React.Component {
     return (
       <nav className="folderList">
         {folders.map(folder =>
-          <Link to={`/folder/${folder.id}`} className={folderId === folder.id ? 'folder-active': 'folder'} key={folder.id}>
+          <Link to={`/folder/${folder.id}`} className={folderId === folder.id ? 'folder-active' : 'folder'} key={folder.id}>
             {folder.name}
           </Link>
         )}
+        <Link to={`/addFolder`}>
+          <button
+            className="addFolder-button"
+            type="button">
+            Add Folder
+          </button>
+        </Link>
       </nav>
     )
   }

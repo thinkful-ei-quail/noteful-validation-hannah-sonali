@@ -1,10 +1,19 @@
 
 .delete_button {
-  margin: 0 0 0 auto;
-  max-width: 160px;
+  margin: -40px 0 0 auto;
+  width: 20%;
+  border-radius: 20px;
+  padding: 8px;
+  background-color: darkslategray;
+  color: peachpuff;
 }
 
 ul.noteList{
   list-style: none;
   padding: 0;
 }
+
+.note-detailed {
+  border-radius: 20px;
+}
+

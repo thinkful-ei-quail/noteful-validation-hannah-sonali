@@ -1,10 +1,11 @@
-import React from 'react';
-import './NoteListMain.css';
-import ApiContext from '../ApiContext';
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { getNotesFolder } from '../Helper';
+import ApiContext from '../ApiContext';
 import Note from '../Note/Note';
+import './NoteListMain.css';
 
-export default class NoteListMain extends React.Component {
+export default class NoteListMain extends Component {
   static contextType = ApiContext;
 
   render() {
@@ -20,6 +21,16 @@ export default class NoteListMain extends React.Component {
               <Note id={note.id} name={note.name} modified={note.modified}/>
             </li>
           ))}
+          <li>
+            <Link to={`/addNote`}>
+              <button 
+                className="addNote-button"
+                type="button" 
+                onClick={this.handleAddClick}>
+                Add Note
+              </button>
+            </Link>
+          </li>
         </ul>
       </section>
     )
