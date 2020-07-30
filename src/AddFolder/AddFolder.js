@@ -30,6 +30,7 @@ export default class AddFolder extends Component {
           })
           .catch(err => {
             console.error({ err })
+          
           })
     }
 
@@ -40,7 +41,7 @@ export default class AddFolder extends Component {
                 <form className="addFolder-form" onSubmit={e => this.handleSubmit(e)}>
                     <div className="field">
                         <label htmlFor="form-folder">Name</label>
-                        <input type="text" id="form-folder" name="form-folder"/>
+                        <input type="text" id="form-folder" name="form-folder" required/>
                     </div>
                     <div className="buttons">
                         <button type="submit" className="folderSubmit">Submit</button>

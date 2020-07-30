@@ -12,7 +12,7 @@ export default class NoteListMain extends Component {
     const { folderId } = this.props.match.params
     const { notes } = this.context
     const noteFolder = getNotesFolder(notes, folderId)
-
+   
     return (
       <section className="NoteListMain">
         <ul className="noteList">

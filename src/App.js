@@ -8,6 +8,7 @@ import ApiContext from './ApiContext';
 import AddNoteForm from './AddNote/AddNoteForm';
 import AddFolder from './AddFolder/AddFolder';
 import API from './API';
+import Error from './ErrorHandling/Error'
 import './App.css';
 
 export default class App extends Component {
@@ -63,8 +64,6 @@ export default class App extends Component {
   }
 
   render() {
-    console.log("Folders after render: ", this.state.folders)
-    console.log("Notes after render: ",this.state.notes)
     const value={
       notes:this.state.notes, 
       folders:this.state.folders, 
@@ -89,11 +88,13 @@ export default class App extends Component {
 
             </nav>
             <main>
-              <Route exact path='/' component={NoteListMain} /> {/* all notes */}
-              <Route path='/addNote' component={AddNoteForm} />
-              <Route path='/addFolder' component={AddFolder}/>
-              <Route path='/folder/:folderId' component={NoteListMain}/>
-              <Route path='/note/:noteId' component={NotePageMain}/>
+              <Error>
+                <Route exact path='/' component={NoteListMain} /> {/* all notes */}
+                <Route path='/addNote' component={AddNoteForm} />
+                <Route path='/addFolder' component={AddFolder}/>
+                <Route path='/folder/:folderId' component={NoteListMain}/>
+                <Route path='/note/:noteId' component={NotePageMain}/>
+              </Error>
               
             </main>
           </div>

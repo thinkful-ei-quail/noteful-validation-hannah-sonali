@@ -50,12 +50,12 @@ export default class AddNoteForm extends Component {
                 <form className="addNote-form" onSubmit={e => this.handleSubmitClick(e)}>
                     <div className="field">
                       <label htmlFor="form-name">Name</label>
-                      <input type="text" id="form-name" name="form-name"/>
+                      <input type="text" id="form-name" name="form-name" required/>
                       <label htmlFor="form-content">Content</label>
                       <textarea id="form-content" name="form-content"/>
                       <label htmlFor="form-select">Folder</label>
                       <div className="select-wrapper">
-                        <select id="form-select" name="form-select">
+                        <select id="form-select" name="form-select" required>
                           {folders.map(folder =>
                             <option value={`${folder.id}`}>{`${folder.name}`}</option>
                           )}
