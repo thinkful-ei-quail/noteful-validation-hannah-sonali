@@ -4,5 +4,4 @@ export default React.createContext({
     notes:[],
     folders:[],
     deleteButton:() => {},
-    
 })

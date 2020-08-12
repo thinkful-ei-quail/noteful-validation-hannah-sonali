@@ -22,6 +22,7 @@ export default class App extends Component {
       notes:this.state.notes.filter(note => note.id !== noteId)
     })
   }
+  
   handleAddNote = note => {
     this.setState({
       notes: this.state.notes.concat(note)
